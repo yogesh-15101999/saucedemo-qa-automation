@@ -24,7 +24,8 @@ test.describe('Login', () => {
             await expect(page.getByText('Products')).toBeVisible();
         });
 
-        await page.waitForTimeout(3000);
+        console.log('✅ Case 1: A standard user can log in and land on the products page - Passed✅');
+        // await page.waitForTimeout(3000);
     });
 
 
@@ -40,9 +41,11 @@ test.describe('Login', () => {
         await test.step('Verify error message shown and no redirection', async () => {
             await expect(loginPage.errorMessage).toBeVisible();
             await expect(loginPage.errorMessage).toHaveText(sauceData.LOCKED_OUT_ERROR);
-            await expect(page).not.toHaveURL(/.*inventory.html/)
+            await expect(page).not.toHaveURL(/.*inventory.html/);
+            console.log('✅ Case 2: A locked-out user sees the correct error message and is NOT logged in - Passed✅')
 
-            await page.waitForTimeout(3000);
+
+            // await page.waitForTimeout(3000);
 
         });
     });
